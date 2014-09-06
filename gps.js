@@ -3,6 +3,45 @@
 //	jQuery GPS
 //
 //////////////////////////////////////////////////
+
+$(window).load(function() {
+ 		 update_img();
+});
+
+var img = new Image();
+img.src = "t-shirt.jpg";
+
+function update_img(){
+	//描画コンテキストの取得
+	var canvas = document.getElementById('a_canvas');
+	if (canvas.getContext) {
+		var context = canvas.getContext('2d');
+
+	   	context.drawImage(img, 0, 0);
+		context.textAlign = "center";
+		context.font = "40pt Arial";
+		context.fillText("loading...", 340, 340);
+/*
+	   	var inputname = document.listname_form.listname_text.value;
+
+	   	if (inputname == "") {
+	   		inputname = document.listname_form.listname_text.placeholder;
+	   	};
+
+		context.font = "20pt Arial";
+		context.fillStyle = 'rgba(255, 255, 255, 1)';
+		context.strokeStyle = 'rgba(255, 255, 255, 1)';
+		context.shadowColor = 'black';
+		context.shadowOffsetX = 2;
+	  	context.shadowOffsetY = 2;
+  		context.shadowBlur = 4;
+		context.textAlign = "center";
+		context.fillText(inputname, 400, 380); */
+
+	   	context.drawImage(img, 0, 0);
+	};
+};
+
 $(function(){
 	//GPS情報取得を開始
 	$('#start_gps').click(function(){
