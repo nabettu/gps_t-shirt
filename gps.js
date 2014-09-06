@@ -40,7 +40,23 @@ function update_img(){
 				lon=position.coords.longitude;
 
 				img_sv.src = "http://maps.googleapis.com/maps/api/streetview?size=300x300&location="+lat+","+lon+"&sensor=false";
-				context.drawImage(img_sv, 190, 170);
+				img_sv.onload = function(){
+					console.log("読み込みが終わりました");
+
+					context.drawImage(img_sv, 190, 175);
+					
+					    var imgd = context.getImageData(190, 170, 300, 300);
+						var pix = imgd.data;
+						for (var i = 0, n = pix.length; i < n; i += 4) {
+							var grayscale = pix[i  ] * .3 + pix[i+1] * .59 + pix[i+2] * .11;
+							pix[i  ] = grayscale; // 赤
+							pix[i+1] = grayscale; // 緑
+							pix[i+2] = grayscale; // 青
+							// アルファ
+						}
+						context.putImageData(imgd, 190, 170);
+						
+				}
 
 				$.get(
 				    url,
@@ -59,17 +75,6 @@ function update_img(){
 						context.fillStyle = 'rgba(255, 255, 255, 1)';
 						context.fillText(result[0].name, 340, 170);
 
-						//settimeout("gray()",3000);
-					    var imgd = context.getImageData(190, 170, 300, 300);
-						var pix = imgd.data;
-						for (var i = 0, n = pix.length; i < n; i += 4) {
-							var grayscale = pix[i  ] * .3 + pix[i+1] * .59 + pix[i+2] * .11;
-							pix[i  ] = grayscale; // 赤
-							pix[i+1] = grayscale; // 緑
-							pix[i+2] = grayscale; // 青
-							// アルファ
-						}
-						context.putImageData(imgd, 190, 170);
 				    }
 				);
 
