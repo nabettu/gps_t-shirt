@@ -12,12 +12,14 @@
 <script type="text/javascript" src="gps.js"></script>
 <link href="main.css" rel="stylesheet">
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
 </head>
 
 <body>
 	<div class="contener">
 		<canvas id="a_canvas" width="680" height="680"></canvas>
-		<div class="makebtn"><a class="makebtnlink" href="javascript:void(0);" id="start_gps">GPS情報を送って村田風Tシャツを作成!</a></div>
+		<div class="makebtn"><a class="makebtnlink" onclick="update_img();" id="start_gps">GPS情報を送って村田風Tシャツを作成!</a></div>
 	</div>
 </body>
 </html>
