@@ -19,6 +19,7 @@
     margin: 20px;
     margin-left:20%;
     border-radius: 20px;
+    display: block;
 }
 
 .makebtnlink{
@@ -29,90 +30,4 @@
 }
 
 #a_canvas{
-}
-
-
-
-
-.container-fluid{
-    background-color: #999999;
-}
-
-.contents{
-    width : 680px;
-    margin: 60px auto;
-    background-color: #ffffff;
-}
-
-/*make*/
-.smallform{
-    width:70px;
-    display: inline-block;
-    display: inline;
-}
-
-.middleform{
-    width:200px;
-    display: inline-block;
-    display: inline;
-}
-
-#addbtn{
-    margin-top:20px; 
-}
-
-.fileUpBtn{
-    border: solid 1px #999999;
-    text-align: center;
-}
-
-/*post*/
-
-#reload_button,#img_button {
-    color:#ffffff;
-    background-color:#ff7700;
-    box-shadow: none;
-    display: inline-block;
-    text-align:center;
-    vertical-align: middle;
-    width:87%;
-    padding: 10px;
-    margin:5px 10px;
-}
-
-a.share-button {
-    color:#ffffff;
-    box-shadow: none;
-    display: inline-block;
-    text-align:center;
-    vertical-align: middle;
-    width:40%;
-    padding: 10px 5px;
-    margin:5px 5px;
-}
-
-canvas {
-    width :500px;
-    height: auto;
-    margin:0 auto;
-    max-width: 100%;
-    max-height: auto;
-    background-color:white;
-}
-
-img.#generated {
-    width :500px;
-    height: auto;
-    max-width: 100%;
-}
-
-form {
-    margin: 30px 30px;
-}
-
-#wrapper{
-    text-align:center;
-    width: 920px;
-    max-width: 100%;
-    margin: 30px auto 0 auto;
 }

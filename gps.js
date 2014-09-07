@@ -39,22 +39,49 @@ function update_img(){
 				lat=position.coords.latitude;
 				lon=position.coords.longitude;
 
-				img_sv.src = "http://maps.googleapis.com/maps/api/streetview?size=300x300&location="+lat+","+lon+"&sensor=false";
+				var img_map = new Image,
+			    canvas2 = document.createElement("canvas"),
+			    ctx = canvas2.getContext("2d"),
+			    src = "http://maps.googleapis.com/maps/api/streetview?size=300x300&location="+lat+","+lon+"&sensor=false"; // insert image url here
+
+				img_map.crossOrigin = "Anonymous";
+
+
+				img_map.src = src;
+				// make sure the load event fires for cached images too
+				if ( img_map.complete || img_map.complete === undefined ) {
+				    img_map.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+				    img_map.src = src;
+				}
+
+				img_map.onload = function() {
+				    canvas2.width = img_map.width;
+				    canvas2.height = img_map.height;
+				    ctx.drawImage( img_map, 0, 0 );
+				    localStorage.setItem( "savedImageData", canvas2.toDataURL("image/png") );
+				    console.log(localStorage.savedImageData);
+				}
+
+				img_sv.src = localStorage.savedImageData;
 				img_sv.onload = function(){
+
+					context.drawImage(img_sv, 190, 180);
+					
 					console.log("読み込みが終わりました");
 
-					context.drawImage(img_sv, 190, 175);
-					
-					    var imgd = context.getImageData(190, 170, 300, 300);
-						var pix = imgd.data;
-						for (var i = 0, n = pix.length; i < n; i += 4) {
-							var grayscale = pix[i  ] * .3 + pix[i+1] * .59 + pix[i+2] * .11;
-							pix[i  ] = grayscale; // 赤
-							pix[i+1] = grayscale; // 緑
-							pix[i+2] = grayscale; // 青
-							// アルファ
-						}
-						context.putImageData(imgd, 190, 170);
+					img_sv.crossOrigin = "Anonymous";
+
+				    var imgd = context.getImageData(190, 180, 300, 300);
+					var pix = imgd.data;
+					for (var i = 0, n = pix.length; i < n; i += 4) {
+						var grayscale = pix[i  ] * .3 + pix[i+1] * .59 + pix[i+2] * .11;
+
+						pix[i  ] = grayscale; // 赤
+						pix[i+1] = grayscale; // 緑
+						pix[i+2] = grayscale; // 青
+						// アルファ
+					}
+					context.putImageData(imgd, 190, 180);
 						
 				}
 
