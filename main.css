@@ -11,7 +11,7 @@
 
 .makebtn{
     width:60%;
-    height: 70px;
+    height: 50px;
     text-align: center;
     vertical-align: middle;
     background-color: #5588ff;
@@ -24,7 +24,6 @@
 
 .makebtnlink{
     position: relative;
-    top:20%;
     color: #333399;
     text-decoration: none;
 }
